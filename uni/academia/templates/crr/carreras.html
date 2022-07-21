@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Carreras</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/.."><h3>Academia</h3></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="carrera_home">Carreras</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="curso_home">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="estudiante_home">Estudiantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="docente_home">Docentes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+{% for careers in carrera %}
+<div class="card mb-3">
+    {% if careers.codigo == 1 %}
+    <img src="{% static '/civil.jpg' %}" class="" width="100%" height="450px">
+    {% elif careers.codigo == 2 %}
+    <img src="{% static '/quimica1.jpg' %}" class="" width="100%" height="550px">
+    {% elif careers.codigo == 3 %}
+    <img src="{% static '/metalurgica.jpg' %}" class="" width="100%" height="550px">
+    {% elif careers.codigo == 4 %}
+    <img src="{% static '/electronica.jpg' %}" class="" width="100%" height="550px">
+    {% elif careers.codigo == 5 %}
+    <img src="{% static '/sistemas.jpg' %}" class="" width="100%" height="550px">
+    {% elif careers.codigo == 6 %}
+    <img src="{% static '/electrica.jpg' %}" class="" width="100%" height="550px">
+    {% elif careers.codigo == 7 %}
+    <img src="{% static '/industrial.jpg' %}" class="" width="100%" height="550px">
+    {% elif careers.codigo == 8 %}
+    <img src="{% static '/mecanica.jpg' %}" class="" width="100%" height="550px">
+    {% endif %}
+  <div class="card-body">
+    <h5 class="card-title">{{careers.nombre}}</h5>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small class="text-muted">Duracion del cursado: {{careers.duracion}}</small></p>
+  </div>
+</div>
+{% endfor %}
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>

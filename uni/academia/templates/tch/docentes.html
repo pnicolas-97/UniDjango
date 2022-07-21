@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Docentes</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/.."><h3>Academia</h3></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="carrera_home">Carreras</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="curso_home">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="estudiante_home">Estudiantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="docente_home">Docentes</a>
+                    </li>
+                </ul>
+            </div>
+            <form class="d-flex" role="search" method="get">
+                <input class="form-control me-2" type="search" placeholder="Search-teachers" aria-label="Search"
+                       name="get_teacher">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<section>
+
+    <div>
+        <nav class="navbar navbar-light bg-light">
+            <button type="button" class="btn btn-outline-info">
+            <a class="navbar-brand" href="añadirdocente">
+                <img src="{% static '/person-plus.svg' %}" width="35" height="35" class="d-inline-block align-top"
+                     alt="">
+                Añadir Docente
+            </a></button>
+        </nav>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#Dni</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellido.P</th>
+            <th scope="col">Apellido.M</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for teacher in docente %}
+        <tr>
+            <th scope="row">{{teacher.dni}}</th>
+            <td>{{teacher.nombres}}</td>
+            <td>{{teacher.apellido_paterno}}</td>
+            <td>{{teacher.apellido_materno}}</td>
+            <td><a href="detalledocente/{{teacher.dni}}">Ver detalle</a></td>
+            <td><a href="editardocente/{{teacher.dni}}">Editar</a></td>
+            <td><a href="eliminardocente/{{teacher.dni}}">Eliminar</a></td>
+        </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+</section>
+
+</body>
+</html>
